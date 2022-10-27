@@ -22,18 +22,20 @@ void check_wr(string &str1) // при вставке папки в vscode поя
         str1.erase(remove(str1.begin(), str1.end(), '\''), str1.end());
 }
 
+string inspect(string &);
+
 void test(string &stri, string &stro)
 {
     cout << "Открытие файла и его редактирование" << endl;
     stri += "/acsii_tmi.txt";
     stro += "/out.txt";
-    ifstream file(stri);  //на чтение (исходный каталог)
-    ofstream mfile(stro); //на запись (выходной каталог)
+    ifstream file(stri);                          //на чтение (исходный каталог)
+    ofstream mfile(stro, ios::binary | ios::out); //на запись (выходной каталог)
     string str;
     int cnt = 0;
     while (getline(file, str)) //получение строки и ее изменение
     {
-        // str = inspect(str); //обработка строки
+        str = inspect(str); //обработка строки
         mfile << cnt << "строка: " << str << " /";
         cnt++;
     }
@@ -42,8 +44,26 @@ void test(string &stri, string &stro)
 int main()
 {
     string stri, stro;
-    readf(stri, stro);
-    check_wr(stri);
-    check_wr(stro);
+    // readf(stri, stro);
+    // check_wr(stri);
+    // check_wr(stro);
+    stri = "/Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/input";
+    stro = "/Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/ouutput";
     test(stri, stro);
+}
+
+string inspect(string &str)
+{
+    string res;
+    
+    string tmshot;
+    unsigned short int years = (stoi(str.substr(0, 4)) - 1900);                            // кол-во дней с 1900 года
+    unsigned int time_m = (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 1000; // количесвто миллисекунд с начала суток
+
+
+    size_t pos = str.find("1ACFFC1D");
+    tmshot = str.find("1ACFFC1D") != string::npos ? str.substr(pos + 8) : str.substr(25);
+    //TM кадр
+    res += to_string(years) + ' ' + to_string(time_m) + ' ' + tmshot;
+    return res;
 }

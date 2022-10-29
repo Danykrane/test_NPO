@@ -10,6 +10,7 @@ void readf(string &, string &); //для работы через консоль 
 void check_wr(string &);        // при вставке папки в vscode появляются '/Users/artemgudzenko/Desktop'
 string inspect(string &);
 void st_chage(string &, string &);
+void add_ext(string &, string &);
 
 int main()
 {
@@ -29,9 +30,6 @@ void readf(string &stri, string &stro) //для работы через конс
 
     cout << "Введите путь для выходного файла\n=> ";
     cin >> stro;
-
-    stri += "/acsii_tmi.txt";
-    stro += "/out.bin";
 }
 
 void check_wr(string &str1) // при вставке папки в vscode появляются '/Users/artemgudzenko/Desktop'
@@ -44,6 +42,7 @@ void check_wr(string &str1) // при вставке папки в vscode поя
 void st_chage(string &stri, string &stro)
 {
     cout << "Открытие файла и его редактирование" << endl;
+    add_ext(stri, stro); //из входного пути добавили название вхо
     ifstream file(stri);                          //на чтение (исходный каталог)
     ofstream mfile(stro, ios::binary | ios::out); //на запись (выходной каталог)
     string str;
@@ -55,6 +54,12 @@ void st_chage(string &stri, string &stro)
         cnt++;
     }
     file.close();
+}
+
+void add_ext(string &stri, string &stro)
+{
+    stri += "/acsii_tmi.txt";
+    stro += "/out.bin";
 }
 
 string inspect(string &str)

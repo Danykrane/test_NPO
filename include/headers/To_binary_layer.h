@@ -4,6 +4,7 @@
 #include <string>
 #include <bitset>
 #include <algorithm>
+#include "Scan_data_layer.h"
 using namespace std;
 
 string inspect(string &);

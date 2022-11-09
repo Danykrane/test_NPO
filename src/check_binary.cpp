@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Scan_data_layer.h"
-#include "To_binary_layer.h"
+#include "../include/headers/To_binary_layer.h"
 
 using namespace std;
 

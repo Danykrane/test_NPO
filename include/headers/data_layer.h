@@ -18,6 +18,8 @@ public:
 
     void add_ext_to_str_locations(); //добавляем название исходника и то, имя файла, который будет на выводе
 
+    void setInp(string &);
+    void setOutp(string &);
     string get_input();
     string get_output();
 };
@@ -31,6 +33,7 @@ class TMshot
 
 public:
     void StartProcess();
+    void SetWay(string, string);
 };
 
 #endif

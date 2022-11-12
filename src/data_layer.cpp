@@ -26,6 +26,14 @@ void Path::add_ext_to_str_locations() //добавляем название ис
     inputF_location += "/acsii_tmi.txt";
     output_Folder += "/out.bin";
 }
+void Path::setInp(string &stri)
+{
+    inputF_location = stri;
+}
+void Path::setOutp(string &stro)
+{
+    output_Folder = stro;
+}
 
 string Path::get_input()
 {
@@ -72,9 +80,17 @@ bool TMshot::file_edit()
 
 void TMshot::StartProcess()
 {
-    input();
+    if (way.get_input() == "", way.get_output() == "") //если путь к файлу не указан
+        input();
+
     cout << "\nОткрытие файла и его редактирование" << endl;
     file_edit() == true ? cout << "Проблема с открытием файла: неправильно указан исходный путь к фалу" << endl : cout << " Данные успешно записаны!!! \n Расположение файла: " << way.get_output() << endl;
+}
+
+void TMshot::SetWay(string stri, string stro)
+{
+    way.setInp(stri);
+    way.setOutp(stro);
 }
 
 void valid_folder_name(string &str1)

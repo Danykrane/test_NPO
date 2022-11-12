@@ -10,7 +10,7 @@ void Application::begin_execution()
 void Application::showMess()
 {
     cout << "\nПрограмма начинает работу" << endl;
-    cout << "Введите: \n1 - файл находится в папке проекта \n2 - введете путь сами" << endl;
+    cout << "Введите: \n1 - Путь указан \n2 - введете путь сами" << endl;
 }
 
 void Application::check()
@@ -18,6 +18,7 @@ void Application::check()
     switch (button)
     {
     case 1:
+        program.SetWay("/Users/artemgudzenko/Desktop/Less_1/c++/ref_npo/ref_NPO/input", "/Users/artemgudzenko/Desktop/Less_1/c++/ref_npo/ref_NPO/ouutput");
         program.StartProcess();
         break;
     case 2:

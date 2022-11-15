@@ -93,12 +93,21 @@ bool TMshot::file_edit()
 
     else
     {
-        ofstream mfile(way.get_output(), ios::binary | ios::out); //на запись (выходной каталог)m
-        while (getline(file, str))                                //получение строки и ее изменение
+        // unsigned short int date_from_1900;                                   // 2 байта под кол-во дней с 1900 года
+        // unsigned int time_from_begining;                                     //миллисекунды
+
+        int cnt = 0;
+        ofstream mfile(way.get_output(), ios::out | ios::binary | ios::app); //на запись (выходной каталог)m
+        while (getline(file, str))                                           //получение строки и ее изменение
         {
-            str = inspect(str); //обработка строки
-            mfile << "начало строки\n"
-                  << str << endl;
+            date_from_1900 = val_years(str);                  // получение кол-ва дней
+            time_from_begining = val_mseconds(str);           // получение кол-ва милисекунд
+            TMshot_string = val_TMshot_str(str);              //получение кадра без начальной последовательности
+            TMshot_string = simple_str_to_hex(TMshot_string); //взятие одного символа по Hex
+
+            mfile.write(reinterpret_cast<const char *>(&date_from_1900), sizeof(date_from_1900));
+            mfile.write(reinterpret_cast<const char *>(&time_from_begining), sizeof(time_from_begining));
+            mfile << TMshot_string;
         }
         file.close();
     }

@@ -1,5 +1,38 @@
 #include "../include/headers/To_binary_func_layer.h"
 
+unsigned short int val_years(string &str) //дни
+{
+    return (stoi(str.substr(0, 4)) - 1900);
+}
+
+unsigned int val_mseconds(string &str) //мсекунды
+{
+    return (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 1000;
+}
+
+string val_TMshot_str(string &str) // TM с проверкой на начальное значение кадра
+{
+
+    size_t pos = str.find("1ACFFC1D");
+    return str.find("1ACFFC1D") != string::npos ? str.substr(pos + 8) : str.substr(25);
+}
+
+string simple_str_to_hex(string &str) //конвертация hex по 2 символа
+{
+    basic_string<uint8_t> bytes;
+
+    for (size_t i = 0; i < str.length(); i += 2)
+    {
+        uint16_t byte;
+        string nextbyte = str.substr(i, 2);
+        istringstream(nextbyte) >> hex >> byte;
+        bytes.push_back(static_cast<uint8_t>(byte));
+    }
+
+    string result(begin(bytes), end(bytes));
+    return result;
+}
+
 string inspect(string &str)
 {
     string res = "";
@@ -7,18 +40,18 @@ string inspect(string &str)
     // подсчет кол-во дней с 1900 года
     unsigned short int years = (stoi(str.substr(0, 4)) - 1900);
     // перевод значения дней в бинарнуб строку размерности 2 байта
-    res += "Кол-во лет: " + changetoBinary(years);
+    res += changetoBinary(years);
 
     // количесвто миллисекунд с начала суток
     unsigned int time_m = (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 1000;
     // перевод значения милисекунд в бинарнуб строку размерности 4 байта
-    res += " Кол-во миллисекунд: " + changetoBinary(time_m);
+    res += changetoBinary(time_m);
 
     size_t pos = str.find("1ACFFC1D");
     //получпние TM кадра без 1ACFFC1D
     tmshot = str.find("1ACFFC1D") != string::npos ? str.substr(pos + 8) : str.substr(25);
     // перевод ТМ кадра в бинарную строку
-    res += " Значение кадра: " + changetoBinary(tmshot);
+    res += changetoBinary(tmshot);
     return res;
 }
 

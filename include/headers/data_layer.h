@@ -32,6 +32,9 @@ public:
 class TMshot
 {
     Path way;
+    unsigned short int date_from_1900; // 2 байта под кол-во дней с 1900 года
+    unsigned int time_from_begining;   //миллисекунды
+    string TMshot_string;              // hex строка
 
     void input();
     bool file_edit();

@@ -2,8 +2,11 @@
 #define DATA_LAYER_H
 
 #include <fstream>
+#include <vector>
+#include <string>
 
 #include "To_binary_func_layer.h"
+#include "read_config_str_layer.h"
 
 void valid_folder_name(string &);
 
@@ -13,6 +16,8 @@ class Path //создание класса, где есть путь входн�
     string output_Folder;   //путь для создания выходного бинарника
 public:
     Path(string inputF_location = "", string output_Folder = "");
+
+    void read_from_config_file();
 
     void read_info_of_folders(); // функция на случай ручной вставки пути к папке
 
@@ -33,7 +38,7 @@ class TMshot
 
 public:
     void StartProcess();
-    void SetWay(string, string);
+    void SetWay();
 };
 
 #endif

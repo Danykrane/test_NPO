@@ -18,7 +18,7 @@ void Application::check()
     switch (button)
     {
     case 1:
-        program.SetWay("/Users/artemgudzenko/Desktop/Less_1/c++/ref_npo/ref_NPO/input", "/Users/artemgudzenko/Desktop/Less_1/c++/ref_npo/ref_NPO/ouutput");
+        program.SetWay();
         program.StartProcess();
         break;
     case 2:

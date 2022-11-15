@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.html.erb": "erb",
+    "sstream": "cpp",
+    "__locale": "cpp",
+    "ios": "cpp"
+  }
+}

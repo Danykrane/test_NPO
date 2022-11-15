@@ -7,18 +7,18 @@ string inspect(string &str)
     // подсчет кол-во дней с 1900 года
     unsigned short int years = (stoi(str.substr(0, 4)) - 1900);
     // перевод значения дней в бинарнуб строку размерности 2 байта
-    res += changetoBinary(years);
+    res += "Кол-во лет: " + changetoBinary(years);
 
     // количесвто миллисекунд с начала суток
     unsigned int time_m = (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 1000;
     // перевод значения милисекунд в бинарнуб строку размерности 4 байта
-    res += changetoBinary(time_m);
+    res += " Кол-во миллисекунд: " + changetoBinary(time_m);
 
     size_t pos = str.find("1ACFFC1D");
     //получпние TM кадра без 1ACFFC1D
     tmshot = str.find("1ACFFC1D") != string::npos ? str.substr(pos + 8) : str.substr(25);
     // перевод ТМ кадра в бинарную строку
-    res += changetoBinary(tmshot);
+    res += " Значение кадра: " + changetoBinary(tmshot);
     return res;
 }
 

@@ -1,0 +1,2 @@
+Путь входного файла: /Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/input
+Путь выходного файла: /Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/ouutput

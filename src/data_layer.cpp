@@ -97,8 +97,9 @@ bool TMshot::file_edit()
         // unsigned int time_from_begining;                                     //миллисекунды
 
         int cnt = 0;
-        ofstream mfile(way.get_output(), ios::out | ios::binary | ios::app); //на запись (выходной каталог)m
-        while (getline(file, str))                                           //получение строки и ее изменение
+
+        ofstream mfile(way.get_output(), ios::trunc | ios::out | ios::binary); //на запись (выходной каталог)m
+        while (getline(file, str))                                             //получение строки и ее изменение
         {
             date_from_1900 = val_years(str);                  // получение кол-ва дней
             time_from_begining = val_mseconds(str);           // получение кол-ва милисекунд

@@ -1,2 +1,2 @@
-Путь входного файла: /Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/input
+Путь и название входного файла: /Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/input/acsii_tmi.txt
 Путь выходного файла: /Users/artemgudzenko/Desktop/Less_1/c++/test_NPO/ouutput

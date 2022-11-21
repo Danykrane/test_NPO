@@ -20,7 +20,7 @@ void Path::read_info_of_folders() // функция на случай ручно
 
 void Path::add_ext_to_str_locations() //добавляем название исходника и то, имя файла, который будет на выводе
 {
-    inputF_location += "/acsii_tmi.txt";
+    // inputF_location += "/acsii_tmi.txt";
     output_Folder += "/out.bin";
 }
 void Path::setInp(string &stri)

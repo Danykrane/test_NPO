@@ -2,12 +2,12 @@
 
 unsigned short int val_years(string &str) //дни
 {
-    return (stoi(str.substr(0, 4)) - 1900);
+    return ((stoi(str.substr(0, 4)) - 1900) * 365);
 }
 
 unsigned int val_mseconds(string &str) //мсекунды
 {
-    return (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 1000;
+    return (stoi(str.substr(14, 2)) * 60 + stoi(str.substr(17, 2))) * 60 * 1000;
 }
 
 string val_TMshot_str(string &str) // TM с проверкой на начальное значение кадра

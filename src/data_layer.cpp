@@ -105,7 +105,7 @@ bool TMshot::file_edit()
             time_from_begining = val_mseconds(str);           // получение кол-ва милисекунд
             TMshot_string = val_TMshot_str(str);              //получение кадра без начальной последовательности
             TMshot_string = simple_str_to_hex(TMshot_string); //взятие одного символа по Hex
-
+            // cout << "Лет после: " << date_from_1900 << " \nМиллисекунды: " << time_from_begining << endl;
             mfile.write(reinterpret_cast<const char *>(&date_from_1900), sizeof(date_from_1900));
             mfile.write(reinterpret_cast<const char *>(&time_from_begining), sizeof(time_from_begining));
             mfile << TMshot_string;
